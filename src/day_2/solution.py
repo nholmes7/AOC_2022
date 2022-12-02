@@ -1,3 +1,9 @@
+translation = {
+    'A': 1,
+    'B': 2,
+    'C': 3,
+}
+
 outcome_score = {
     1: 6,
     0: 3,
@@ -12,14 +18,9 @@ def play_game(p1, p2):
     return outcome
 
 def p1():
-    translation = {
-        'X': 1,
-        'Y': 2,
-        'Z': 3,
-        'A': 1,
-        'B': 2,
-        'C': 3,
-    }
+    translation['X'] = 1
+    translation['Y'] = 2
+    translation['Z'] = 3
 
     score = 0
 
@@ -33,14 +34,9 @@ def p1():
     return score
 
 def p2():
-    translation = {
-        'X': -1,
-        'Y': 0,
-        'Z': 1,
-        'A': 1,
-        'B': 2,
-        'C': 3,
-    }
+    translation['X'] = -1
+    translation['Y'] = 0
+    translation['Z'] = 1
 
     score = 0
 
