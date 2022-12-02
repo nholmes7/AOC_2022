@@ -10,7 +10,7 @@ outcome_score = {
     -1: 0,
 }
 
-# takes player 1 and player 2 selections (options are 1, 2, or 3)
+# takes player 1 and player 2 selections (options are 1, 2, or 3 corresponding to rock, paper, and scissors)
 # returns -1 for loss, 0 for tie, 1 for win
 def play_game(p1, p2):
     diff = p1-p2
