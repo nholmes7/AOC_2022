@@ -13,18 +13,18 @@ def calculate_elf_cals():
     
     return elves
 
-def d1_p1():
+def p1():
     elves = calculate_elf_cals()
     return max(elves)
 
-def d1_p2():
+def p2():
     elves = calculate_elf_cals()
     elves.sort()
     return sum(elves[-3:])
 
 def solve_p1_and_p2():
-    return d1_p1(), d1_p2()
+    return p1(), p2()
 
 if __name__ == "__main__":
-    print(f'Part 1: {d1_p1()}')
-    print(f'Part 2: {d1_p2()}')
+    print(f'Part 1: {p1()}')
+    print(f'Part 2: {p2()}')
