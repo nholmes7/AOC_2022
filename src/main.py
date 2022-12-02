@@ -1,22 +1,21 @@
 import timeit
-from day_1.solution import d1_p1, d1_p2
+import os
+from importlib import import_module
 
-master_dict = {
-    'Part 1':[d1_p1],
-    'Part 2':[d1_p2],
-    'Time 1':[],
-    'Time 2':[],
-}
-
+total_solve_time = 0
 timeit_repetitions = 10
 
-for i,_ in enumerate(master_dict['Part 1']):
-    print(f'Day {i+1}, part 1: {master_dict["Part 1"][i]()}')
-    print(f'Day {i+1}, part 2: {master_dict["Part 2"][i]()}')
-    t1 = timeit.timeit('master_dict["Part 1"][i]()', number=timeit_repetitions, globals=globals())/timeit_repetitions
-    t2 = timeit.timeit('master_dict["Part 2"][i]()', number=timeit_repetitions, globals=globals())/timeit_repetitions
-    master_dict['Time 1'].append(t1)
-    master_dict['Time 2'].append(t2)
-    print(f'Execution time: {t1+t2:.3e} s\n')
+# generate a list of the folder names in the src/ directory
+day_directories = next(os.walk('src/'))[1]
+day_directories.sort()
 
-print(f'Total execution time: {sum(master_dict["Time 1"]) + sum(master_dict["Time 2"]):.3f} s')
+for i, directory in enumerate(day_directories):
+    solution = import_module(f'{directory}.solution')
+    p1, p2 = solution.solve_p1_and_p2()
+    solve_time = timeit.timeit('solution.solve_p1_and_p2()', number=timeit_repetitions, globals=globals())/timeit_repetitions
+    total_solve_time += solve_time
+    print(f'Day {i+1}, part 1: {p1}')
+    print(f'Day {i+1}, part 2: {p2}')
+    print(f'Execution time: {solve_time:.3e} s\n')
+
+print(f'Total execution time: {total_solve_time:.3f} s')

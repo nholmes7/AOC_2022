@@ -22,6 +22,9 @@ def d1_p2():
     elves.sort()
     return sum(elves[-3:])
 
+def solve_p1_and_p2():
+    return d1_p1(), d1_p2()
+
 if __name__ == "__main__":
     print(f'Part 1: {d1_p1()}')
     print(f'Part 2: {d1_p2()}')
