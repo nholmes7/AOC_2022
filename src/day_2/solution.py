@@ -4,6 +4,8 @@ outcome_score = {
     -1: 0,
 }
 
+# takes player 1 and player 2 selections (options are 1, 2, or 3)
+# returns -1 for loss, 0 for tie, 1 for win
 def play_game(p1, p2):
     diff = p1-p2
     outcome = 1.5*diff - 0.5*pow(diff,3)
