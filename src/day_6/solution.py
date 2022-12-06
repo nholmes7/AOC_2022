@@ -12,12 +12,10 @@ def find_start_char(buffer_size):
             return i + 1
 
 def p1():
-    answer = find_start_char(4)
-    return answer
+    return find_start_char(4)
 
 def p2():    
-    answer = find_start_char(14)
-    return answer
+    return find_start_char(14)
 
 def solve_p1_and_p2():
     return p1(), p2()
