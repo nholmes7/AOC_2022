@@ -48,6 +48,12 @@ def parse_input():
     
     return crate_info, instructions
 
+def generate_answer(crate_stacks):
+    answer = ''
+    for stack in crate_stacks:
+        answer += stack[-1]
+    return answer
+
 def p1():
     crate_info, instructions = parse_input()
 
@@ -55,14 +61,10 @@ def p1():
         repeats = instruction[0]
         from_pos = instruction[1]-1
         dest_pos = instruction[2]-1
-        for i in range(repeats):
+        for _ in range(repeats):
             crate_info[dest_pos].append(crate_info[from_pos].pop())
 
-    answer = ''
-    for stack in crate_info:
-        answer += stack[-1]
-
-    return answer
+    return generate_answer(crate_info)
 
 def p2():
     crate_info, instructions = parse_input()
@@ -72,16 +74,12 @@ def p2():
         from_pos = instruction[1]-1
         dest_pos = instruction[2]-1
         temp = []
-        for i in range(repeats):
+        for _ in range(repeats):
             temp.append(crate_info[from_pos].pop())
         temp.reverse()
         crate_info[dest_pos] += temp
 
-    answer = ''
-    for stack in crate_info:
-        answer += stack[-1]
-
-    return answer
+    return generate_answer(crate_info)
 
 def solve_p1_and_p2():
     return p1(), p2()
