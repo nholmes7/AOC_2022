@@ -2,13 +2,16 @@ def parse_input():
     with open('src/day_5/input', 'r') as file:
         data = file.readlines()
 
+    # find the point where the file stops describing the crate positions
+    # and switches to moving instructions
     split_loc = data.index('\n')
 
     # find the crate data
     crate_data = data[:split_loc]
 
-    # find the instructions, and convert them to a nested list
+    # find the instructions
     instructions = data[split_loc+1:]
+    # split the instructions into a nested list
     vals = []
     for instruction in instructions:
         val_group = []
@@ -21,7 +24,8 @@ def parse_input():
 
     instructions = vals
 
-    # find the number of stacks to parse
+    # find the number of stacks to parse - this is the last number
+    # in the line before where the file is split
     stacks = crate_data[-1].split(' ')
     stacks.reverse()
     for index in stacks:
@@ -62,7 +66,7 @@ def p1():
 
 def p2():
     crate_info, instructions = parse_input()
-    
+
     for instruction in instructions:
         repeats = instruction[0]
         from_pos = instruction[1]-1
