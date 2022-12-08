@@ -35,13 +35,14 @@ def calculate_view_score(r,c,data):
             if direction[0] <= house_height:
                 view_score *= len(direction)
                 continue
-        if max(direction) < house_height:
-            view_score *= len(direction)
-            continue
         for i, tree_height in enumerate(direction):
             if tree_height >= house_height:
                 view_score *= i + 1
                 break
+
+            # we've hit the end of the line, and there hasn't been a tree as tall as the house
+            if i == len(direction) - 1:
+                view_score *= i + 1
     return view_score
 
 def p1():
