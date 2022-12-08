@@ -2,6 +2,7 @@ import numpy as np
 
 def determine_visibility(input):
     rows, columns = input.shape
+    # scan through each row, tracking the max value seen and setting each value to the current max
     for row, row_vals in enumerate(input):
         row_max = -1
         for column, column_val in enumerate(row_vals):
@@ -12,13 +13,16 @@ def determine_visibility(input):
                 row_max = column_val
             input[row,column] = row_max
 
+    # shift values one to the right
     offset_input = input[:,:columns-1]
     offset_input = np.insert(offset_input, obj=0, values=-1, axis=1)
+    # visible only if it's taller than the one to its left
     visibility = (input - offset_input) > 0
 
     return visibility
 
 def define_views(r,c,data):
+    # slicing and dicing
     right = data[r,c+1:]
     up = np.flip(data[:r,c])
     down = data[r+1:,c]
